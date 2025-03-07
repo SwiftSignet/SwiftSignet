@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config"; // Import API URL from config.js
 
 const Signup = () => {
   const navigate = useNavigate(); // For redirection
@@ -29,14 +30,14 @@ const Signup = () => {
     setErrorMessage(""); // Reset error message
     setSuccessMessage(""); // Reset success message
 
-    // ✅ Basic Form Validation
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMessage("Passwords do not match!");
+    // ✅ **Basic Form Validation**
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password || !formData.confirmPassword) {
+      setErrorMessage("All fields are required!");
       return;
     }
 
-    if (!formData.email || !formData.password) {
-      setErrorMessage("Please fill out all fields!");
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage("Passwords do not match!");
       return;
     }
 
@@ -45,7 +46,7 @@ const Signup = () => {
     console.log("Submitting Data:", formData); // Debugging log
 
     try {
-      const response = await fetch("https://mighty-meadow-88905-38b4888f41fb.herokuapp.com/api/signup", { // Use your Heroku backend URL
+      const response = await fetch(`${API_BASE_URL}/signup`, { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 /* ✅ Tailwind Directives */
+=======
+>>>>>>> 15f31e5 (UI Enhancements for Signup and Login)
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 /* ✅ Global Body Styles */
 body {
   background: linear-gradient(to bottom, #3b82f6, #d946ef);
@@ -199,3 +203,8 @@ body {
     width: 120px;
   }
 }
+=======
+body {
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white;
+}
+>>>>>>> 15f31e5 (UI Enhancements for Signup and Login)

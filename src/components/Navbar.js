@@ -4,13 +4,19 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+<<<<<<< HEAD
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+=======
+
+  // Check if the user is logged in
+>>>>>>> 15f31e5 (UI Enhancements for Signup and Login)
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
   }, []);
 
+<<<<<<< HEAD
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
@@ -38,17 +44,41 @@ const Navbar = () => {
               to="/dashboard"
               className="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-green-600 transition"
             >
+=======
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove token
+    setIsLoggedIn(false);
+    navigate("/"); // Redirect to homepage
+  };
+
+  return (
+    <nav className="bg-white shadow-md p-4 flex justify-between items-center">
+      {/* Brand Name */}
+      <Link to="/" className="text-2xl font-bold text-blue-600">SwiftSignet</Link>
+
+      {/* Navigation Links */}
+      <div className="space-x-4">
+        {isLoggedIn ? (
+          <>
+            <Link to="/dashboard" className="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400">
+>>>>>>> 15f31e5 (UI Enhancements for Signup and Login)
               Dashboard
             </Link>
             <button
               onClick={handleLogout}
+<<<<<<< HEAD
               className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+=======
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+>>>>>>> 15f31e5 (UI Enhancements for Signup and Login)
             >
               Log Out
             </button>
           </>
         ) : (
           <>
+<<<<<<< HEAD
             <Link
               to="/login"
               className="px-4 py-2 bg-white text-green-600 rounded-lg hover:bg-green-700 hover:text-white transition"
@@ -59,11 +89,18 @@ const Navbar = () => {
               to="/signup"
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
             >
+=======
+            <Link to="/login" className="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400">
+              Log In
+            </Link>
+            <Link to="/signup" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+>>>>>>> 15f31e5 (UI Enhancements for Signup and Login)
               Sign Up
             </Link>
           </>
         )}
       </div>
+<<<<<<< HEAD
 
       {/* Mobile Menu Button */}
       <button
@@ -132,6 +169,8 @@ const Navbar = () => {
           )}
         </div>
       )}
+=======
+>>>>>>> 15f31e5 (UI Enhancements for Signup and Login)
     </nav>
   );
 };

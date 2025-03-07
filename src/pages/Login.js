@@ -1,62 +1,50 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.css";
 =======
 import React, { useState } from "react";
+=======
+import React, { useState, useEffect } from "react";
+>>>>>>> 15f31e5 (UI Enhancements for Signup and Login)
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config"; // Keep API URL
 
 const Login = () => {
-  const navigate = useNavigate(); // For redirection
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
-  // Handle input changes
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
 
-  // Handle form submission
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Reset error message
+    setErrorMessage("");
     setLoading(true);
 
-    console.log("Submitting Login Data:", formData); // Debugging log
-
     try {
-      const response = await fetch(
-        "https://mighty-meadow-88905-38b4888f41fb.herokuapp.com/api/login", // Use your backend URL
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
       const data = await response.json();
-      console.log("Response Data:", data); // Debugging log
-
       if (response.ok) {
-        console.log("Login successful! Redirecting...");
-        localStorage.setItem("token", data.token); // Store token for authentication
-        navigate("/dashboard"); // Redirect on success
+        localStorage.setItem("token", data.token);
+        navigate("/dashboard");
       } else {
-        console.error("Login failed:", data);
-        setErrorMessage(data.message || "Invalid credentials. Please try again.");
+        setErrorMessage(data.message || "Invalid credentials. Try again.");
       }
     } catch (error) {
-      console.error("Error:", error);
       setErrorMessage("Something went wrong! Please check your connection.");
     } finally {
       setLoading(false);
@@ -64,42 +52,20 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-6">
-      <h1 className="text-5xl font-extrabold text-gray-900">Login to Your Account</h1>
-      <p className="text-lg text-gray-700 mt-4 max-w-2xl">
-        Welcome back! Please enter your credentials to continue.
-      </p>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-center p-6">
+      <button className="absolute top-4 right-4 p-2 rounded bg-gray-200 dark:bg-gray-700" onClick={() => setDarkMode(!darkMode)}>
+        {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
+      </button>
+      <h1 className="text-4xl font-bold text-green-600 dark:text-green-400">Login to Your Account</h1>
+      <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">Enter your credentials to continue.</p>
 
-      <form className="mt-6 flex flex-col space-y-4 w-full max-w-md" onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="px-4 py-2 border rounded-lg w-full"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          className="px-4 py-2 border rounded-lg w-full"
-          required
-        />
-
-        {/* Display error message if any */}
+      <form className="mt-6 space-y-4 w-full max-w-md bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg" onSubmit={handleSubmit}>
+        {["email", "password"].map((field, index) => (
+          <input key={index} type={field === "password" ? "password" : "email"} name={field} placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+            value={formData[field]} onChange={handleChange} className="px-4 py-2 border rounded-lg w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white" required />
+        ))}
         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-
-        <button
-          type="submit"
-          className={`mt-4 px-8 py-3 text-white text-lg rounded-lg transition-all ${
-            loading ? "bg-gray-500" : "bg-blue-600 hover:bg-blue-700"
-          }`}
-          disabled={loading}
-        >
+        <button type="submit" className={`w-full py-3 text-white rounded-lg transition-all ${loading ? "bg-gray-500" : "bg-green-600 hover:bg-green-700"}`} disabled={loading}>
           {loading ? "Logging In..." : "Log In"}
         </button>
       </form>

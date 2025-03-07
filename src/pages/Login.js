@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config"; // Import API URL from config.js
 
 const Login = () => {
   const navigate = useNavigate(); // For redirection
@@ -27,16 +28,13 @@ const Login = () => {
     console.log("Submitting Login Data:", formData); // Debugging log
 
     try {
-      const response = await fetch(
-        "https://mighty-meadow-88905-38b4888f41fb.herokuapp.com/api/login", // Use your backend URL
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/login`, { // Use API base URL from config.js
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       const data = await response.json();
       console.log("Response Data:", data); // Debugging log

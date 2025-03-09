@@ -1,12 +1,17 @@
 // src/index.js
+// ✅ Import global styles
+import './styles.css';  // Tailwind CSS (Ensure Tailwind is configured)
+import "@fortawesome/fontawesome-free/css/all.min.css";  // FontAwesome Icons
 
-import React from 'react';  // Import React
-import ReactDOM from 'react-dom/client';  // Import ReactDOM
-import './styles.css';  // Import Tailwind CSS styles (instead of index.css)
+// ✅ Import React & ReactDOM
+import React from 'react';
+import ReactDOM from 'react-dom/client';  
 
-import App from './App';  // Import the root component (App.js)
+// ✅ Import main components
+import App from './App';  
 import reportWebVitals from './reportWebVitals';
 
+// ✅ Use React 18's createRoot API
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -14,8 +19,5 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-
+// ✅ Performance monitoring (optional)
+reportWebVitals(console.log);

@@ -19,30 +19,41 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md p-4 flex justify-between items-center">
+    <nav className="bg-green-600 text-white shadow-md p-4 flex justify-between items-center">
       {/* Brand Name */}
-      <Link to="/" className="text-2xl font-bold text-blue-600">SwiftSignet</Link>
+      <Link to="/" className="text-2xl font-bold text-white hover:text-gray-200 transition-all">
+        SwiftSignet
+      </Link>
 
       {/* Navigation Links */}
-      <div className="space-x-4">
+      <div className="flex flex-col space-y-2 text-center">
         {isLoggedIn ? (
           <>
-            <Link to="/dashboard" className="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400">
+            <Link
+              to="/dashboard"
+              className="px-6 py-2 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition-all"
+            >
               Dashboard
             </Link>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+              className="px-6 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition-all"
             >
               Log Out
             </button>
           </>
         ) : (
           <>
-            <Link to="/login" className="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400">
+            <Link
+              to="/login"
+              className="px-6 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-gray-200 transition-all"
+            >
               Log In
             </Link>
-            <Link to="/signup" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+            <Link
+              to="/signup"
+              className="px-6 py-2 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition-all"
+            >
               Sign Up
             </Link>
           </>

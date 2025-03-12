@@ -5,55 +5,39 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Check if the user is logged in
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
   }, []);
 
-  // Handle logout
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove token
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
-    navigate("/"); // Redirect to homepage
+    navigate("/");
   };
 
   return (
-    <nav className="bg-green-600 text-white shadow-md p-4 flex justify-between items-center">
-      {/* Brand Name */}
-      <Link to="/" className="text-2xl font-bold text-white hover:text-gray-200 transition-all">
-        SwiftSignet
-      </Link>
-
-      {/* Navigation Links */}
-      <div className="flex flex-col space-y-2 text-center">
+    <nav className="bg-gradient-to-r from-green-500 via-blue-500 to-pink-500 shadow-md p-4 flex justify-between items-center">
+      <Link to="/" className="text-2xl font-bold text-white">SwiftSignet</Link>
+      <div className="space-x-4">
         {isLoggedIn ? (
           <>
-            <Link
-              to="/dashboard"
-              className="px-6 py-2 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition-all"
-            >
+            <Link to="/dashboard" className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-300">
               Dashboard
             </Link>
             <button
               onClick={handleLogout}
-              className="px-6 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition-all"
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
             >
               Log Out
             </button>
           </>
         ) : (
           <>
-            <Link
-              to="/login"
-              className="px-6 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-gray-200 transition-all"
-            >
+            <Link to="/login" className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-300">
               Log In
             </Link>
-            <Link
-              to="/signup"
-              className="px-6 py-2 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition-all"
-            >
+            <Link to="/signup" className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
               Sign Up
             </Link>
           </>

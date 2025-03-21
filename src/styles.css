@@ -1,11 +1,198 @@
+/* 🌈 Background Gradient */
 body {
-  font-family: "Arial", sans-serif;
-  background: linear-gradient(to bottom right, #007bff, #ff69b4);
+  background: linear-gradient(to bottom, #3b82f6, #d946ef);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 📌 Navbar - Sticks to the Top */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Space between logo & buttons */
+  align-items: center;
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(59, 130, 246, 0.9); /* Semi-transparent background */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 🏠 Navbar Logo */
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+/* 🔘 Buttons */
+.btn {
+  background: white;
+  color: #3b82f6;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  margin: 5px;
+}
+
+.btn:hover {
+  background: #2563eb;
   color: white;
 }
 
-input {
-  border-radius: 6px;
+.btn-signup {
+  background: #d946ef;
+  color: white;
+}
+
+.btn-signup:hover {
+  background: #a21caf;
+}
+
+/* 📢 Hero Section */
+.hero {
+  max-width: 700px;
+  margin: 120px auto 50px; /* Adjusted for sticky navbar */
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: #3b82f6;
+}
+
+/* 🤖 Chatbot - Collapsible Feature */
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.chatbot-header {
+  background: #3b82f6;
+  color: white;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+
+.chatbot.collapsed {
+  height: 40px;
+  width: 150px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* 📩 Chat Window */
+.chat-window {
+  height: 250px;
+  overflow-y: auto;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  max-width: 85%;
+  font-size: 14px;
+}
+
+.chat-message.user {
+  background: #d1e7ff;
+  align-self: flex-end;
+}
+
+.chat-message.bot {
+  background: #e2e2e2;
+}
+
+/* 📝 Chat Input */
+.chat-input {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-input input {
+  flex-grow: 1;
   padding: 10px;
   border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.chat-input button {
+  background: linear-gradient(135deg, #3b82f6, #d946ef);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.chat-input button:hover {
+  transform: scale(1.05);
+}
+
+/* 📱 Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero {
+    margin-top: 150px;
+    padding: 20px;
+  }
+
+  .chatbot {
+    width: 300px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .chatbot.collapsed {
+    width: 120px;
+  }
 }

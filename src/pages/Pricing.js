@@ -11,61 +11,70 @@ const Pricing = () => {
         SwiftSignet offers flexible plans with industry-leading security, AI-powered verification, and blockchain protection.
       </p>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl">
         {/* Monthly Subscription */}
-        <div className="bg-white p-6 rounded-lg shadow-lg w-80 border border-gray-200">
-          <h2 className="text-2xl font-semibold text-gray-900">Monthly Plan</h2>
-          <p className="text-gray-600 mt-2">$14.99/month</p>
-          <ul className="mt-4 text-left space-y-2">
-            <li>✅ Unlimited document signing</li>
-            <li>✅ AI-powered contract generation</li>
-            <li>✅ Biometric & Blockchain Security</li>
-            <li>✅ Priority support</li>
-          </ul>
-          <button
-            onClick={() => navigate("/signup")}
-            className="mt-6 px-6 py-3 bg-blue-600 text-white text-lg rounded-lg hover:bg-blue-700 transition-all w-full"
-          >
-            Buy Now
-          </button>
-        </div>
+        <PricingCard
+          title="Monthly Plan"
+          price="$14.99/month"
+          features={[
+            "✅ Unlimited document signing",
+            "✅ AI-powered contract generation",
+            "✅ Biometric & Blockchain Security",
+            "✅ Priority support",
+          ]}
+          buttonText="Buy Now"
+          onClick={() => navigate("/signup")}
+        />
 
-        {/* Pay-Per-Sign */}
-        <div className="bg-white p-6 rounded-lg shadow-lg w-80 border border-gray-200">
-          <h2 className="text-2xl font-semibold text-gray-900">Pay Per Sign</h2>
-          <p className="text-gray-600 mt-2">$2.99 per document</p>
-          <ul className="mt-4 text-left space-y-2">
-            <li>✅ One-time secure e-signature</li>
-            <li>✅ AI-powered verification</li>
-            <li>✅ Blockchain security</li>
-            <li>✅ No subscription required</li>
-          </ul>
-          <button
-            onClick={() => navigate("/signup")}
-            className="mt-6 px-6 py-3 bg-green-600 text-white text-lg rounded-lg hover:bg-green-700 transition-all w-full"
-          >
-            Pay as You Go
-          </button>
-        </div>
+        {/* Pay-Per-Sign Plan */}
+        <PricingCard
+          title="Pay Per Sign"
+          price="$2.99 per document"
+          features={[
+            "✅ One-time secure e-signature",
+            "✅ AI-powered verification",
+            "✅ Blockchain security",
+            "✅ No subscription required",
+          ]}
+          buttonText="Pay as You Go"
+          onClick={() => navigate("/signup")}
+        />
 
         {/* Annual Subscription */}
-        <div className="bg-white p-6 rounded-lg shadow-lg w-80 border border-gray-200">
-          <h2 className="text-2xl font-semibold text-gray-900">Annual Plan</h2>
-          <p className="text-gray-600 mt-2">$149.99/year (Save 16%)</p>
-          <ul className="mt-4 text-left space-y-2">
-            <li>✅ Unlimited document signing</li>
-            <li>✅ AI-powered contract drafting</li>
-            <li>✅ Smart reminders & automation</li>
-            <li>✅ 24/7 priority support</li>
-          </ul>
-          <button
-            onClick={() => navigate("/signup")}
-            className="mt-6 px-6 py-3 bg-purple-600 text-white text-lg rounded-lg hover:bg-purple-700 transition-all w-full"
-          >
-            Get Annual Plan
-          </button>
-        </div>
+        <PricingCard
+          title="Annual Plan"
+          price="$149.99/year"
+          features={[
+            "✅ Unlimited document signing",
+            "✅ AI-powered contract drafting",
+            "✅ Smart reminders & automation",
+            "✅ 24/7 priority support",
+          ]}
+          buttonText="Get Annual Plan"
+          onClick={() => navigate("/signup")}
+        />
       </div>
+    </div>
+  );
+};
+
+// ✅ Reusable Pricing Card Component
+const PricingCard = ({ title, price, features, buttonText, onClick }) => {
+  return (
+    <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all w-full max-w-sm">
+      <h2 className="text-2xl font-semibold text-gray-900">{title}</h2>
+      <p className="text-gray-600 mt-2 text-lg font-medium">{price}</p>
+      <ul className="mt-4 text-left space-y-2">
+        {features.map((feature, index) => (
+          <li key={index} className="text-gray-700">{feature}</li>
+        ))}
+      </ul>
+      <button
+        onClick={onClick}
+        className="mt-6 w-full py-3 text-white text-lg font-bold rounded-lg transition-all bg-blue-600 hover:bg-blue-700"
+      >
+        {buttonText}
+      </button>
     </div>
   );
 };

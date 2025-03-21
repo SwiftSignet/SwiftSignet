@@ -1,40 +1,39 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, useStripe, useElements } from "@stripe/react-stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 const stripePromise = loadStripe("pk_test_51QzywxPQvJWCKOQv6ECF3W3ZGedoTUZNKCBPumJvCN4umScf065Z64zrhJIv8bJsGyIDKTWJCZKMM8IOBgz8J5ad00kdTJBpug");
 
-const CheckoutButton = ({ planType, email }) => {
+const CheckoutButton = ({ planType }) => {
   const navigate = useNavigate();
+  const userEmail = localStorage.getItem("userEmail"); // Ensure email is retrieved correctly
 
   const handleCheckout = async () => {
-    const response = await fetch("https://mighty-meadow-88905-38b4888f41fb.herokuapp.com/api/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ planType }),
-    });
+    try {
+      const response = await fetch("https://mighty-meadow-88905-38b4888f41fb.herokuapp.com/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ planType, email: userEmail }),
+      });
 
-    const { id } = await response.json();
-    if (id) {
-      // Redirect to Stripe Checkout
-      window.location.href = `https://checkout.stripe.com/pay/${id}`;
+      const data = await response.json();
       
-  // Save payment status when they return
-  await fetch("https://mighty-meadow-88905-38b4888f41fb.herokuapp.com/api/payment-success", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, planType, sessionId: id }),
-  });
+      if (data.sessionId) {
+        // Redirect user to Stripe checkout
+        window.location.href = data.url;
 
-  // Redirect user to the dashboard
-  setTimeout(() => {
-    navigate("/dashboard");
-  }, 3000);
-} else {
-  alert("Payment failed! Please try again.");
-}
-};
+        // Store session ID for tracking
+        localStorage.setItem("stripeSessionId", data.sessionId);
+      } else {
+        throw new Error("Payment session creation failed.");
+      }
+    } catch (error) {
+      console.error("Checkout Error:", error);
+      alert("Payment failed! Please try again.");
+    }
+  };
+
   return (
     <button
       onClick={handleCheckout}

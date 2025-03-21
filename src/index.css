@@ -1,17 +1,177 @@
-/* src/index.css */
-/*
-body {
+/* ✅ Reset Default Styles */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to bottom, #3b82f6, #d946ef);
+  color: #fff;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ✅ Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
-*/
 
+.navbar a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+/* ✅ Buttons */
+.btn {
+  background: #ffffff;
+  color: #3b82f6;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+  margin: 5px;
+}
+
+.btn:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-signup {
+  background: #d946ef;
+  color: white;
+}
+
+.btn-signup:hover {
+  background: #a21caf;
+}
+
+/* ✅ Hero Section */
+.hero {
+  max-width: 700px;
+  margin: 50px auto;
+  color: white;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: #3b82f6;
+}
+
+/* ✅ Chatbot Styling */
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  font-size: 16px;
+  color: black;
+}
+
+.chat-window {
+  height: 250px;
+  overflow-y: auto;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  max-width: 85%;
+  font-size: 14px;
+}
+
+.chat-message.user {
+  background: #d1e7ff;
+  align-self: flex-end;
+}
+
+.chat-message.bot {
+  background: #e2e2e2;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.chat-input button {
+  background: linear-gradient(135deg, #3b82f6, #d946ef);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.chat-input button:hover {
+  transform: scale(1.05);
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    max-width: 90%;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .chatbot {
+    width: 90%;
+    right: 5%;
+  }
+}

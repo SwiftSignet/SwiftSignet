@@ -5,13 +5,13 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  // Ensure user is logged in, otherwise redirect to login
+  // Redirect if user is not logged in
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     } else {
-      navigate("/login"); // Redirect to login if no user found
+      navigate("/login");
     }
   }, [navigate]);
 

@@ -2,11 +2,13 @@
   "name": "swiftsignet",
   "version": "1.0.0",
   "private": true,
-  "homepage": "www.swiftsignet.com",
+  "homepage": "https://www.swiftsignet.com",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^13.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.4.0",
     "dotenv": "^16.4.7",
@@ -27,17 +29,10 @@
     "deploy": "vercel --prod"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

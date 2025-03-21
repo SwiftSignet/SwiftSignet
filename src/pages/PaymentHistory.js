@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const PaymentHistory = () => {
   const [history, setHistory] = useState([]);
+<<<<<<< HEAD
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -32,6 +33,18 @@ const PaymentHistory = () => {
       } finally {
         setLoading(false);
       }
+=======
+
+  useEffect(() => {
+    const fetchHistory = async () => {
+      const response = await fetch("https://mighty-meadow-88905-38b4888f41fb.herokuapp.com/api/payment-history", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await response.json();
+      setHistory(data);
+>>>>>>> 4561fb9 (Updated Signup.js to use config.js)
     };
 
     fetchHistory();
@@ -39,6 +52,7 @@ const PaymentHistory = () => {
 
   return (
     <div className="container mx-auto p-6">
+<<<<<<< HEAD
       <h1 className="text-3xl font-bold text-center text-gray-700 mb-4">Payment History</h1>
 
       {loading && <p className="text-center text-gray-500">Loading payment history...</p>}
@@ -67,6 +81,21 @@ const PaymentHistory = () => {
         </div>
       ) : (
         !loading && <p className="text-center text-gray-600">No payment history available.</p>
+=======
+      <h1 className="text-3xl font-bold mb-4">Payment History</h1>
+      {history.length > 0 ? (
+        <ul className="bg-white shadow-md rounded p-4">
+          {history.map((payment, index) => (
+            <li key={index} className="border-b p-2">
+              <strong>Plan:</strong> {payment.planType} | 
+              <strong> Amount:</strong> ${payment.amount / 100} | 
+              <strong> Date:</strong> {new Date(payment.date).toLocaleDateString()}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No payment history available.</p>
+>>>>>>> 4561fb9 (Updated Signup.js to use config.js)
       )}
     </div>
   );

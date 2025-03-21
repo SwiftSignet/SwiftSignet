@@ -28,22 +28,37 @@ const Navbar = () => {
       <div className="hidden md:flex space-x-6">
         {isLoggedIn ? (
           <>
-            <Link to="/upload-document" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            <Link
+              to="/upload-document"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            >
               Upload Document
             </Link>
-            <Link to="/dashboard" className="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-green-600 transition">
+            <Link
+              to="/dashboard"
+              className="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-green-600 transition"
+            >
               Dashboard
             </Link>
-            <button onClick={handleLogout} className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+            >
               Log Out
             </button>
           </>
         ) : (
           <>
-            <Link to="/login" className="px-4 py-2 bg-white text-green-600 rounded-lg hover:bg-green-700 hover:text-white transition">
+            <Link
+              to="/login"
+              className="px-4 py-2 bg-white text-green-600 rounded-lg hover:bg-green-700 hover:text-white transition"
+            >
               Log In
             </Link>
-            <Link to="/signup" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            <Link
+              to="/signup"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            >
               Sign Up
             </Link>
           </>
@@ -55,8 +70,19 @@ const Navbar = () => {
         className="md:hidden focus:outline-none"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
         </svg>
       </button>
 
@@ -65,22 +91,41 @@ const Navbar = () => {
         <div className="absolute top-16 right-4 bg-green-600 text-white rounded-lg shadow-lg p-4 flex flex-col space-y-4 md:hidden">
           {isLoggedIn ? (
             <>
-              <Link to="/upload-document" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                to="/upload-document"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Upload Document
               </Link>
-              <Link to="/dashboard" className="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-green-600 transition" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                to="/dashboard"
+                className="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-green-600 transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Dashboard
               </Link>
-              <button onClick={handleLogout} className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+              >
                 Log Out
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="px-4 py-2 bg-white text-green-600 rounded-lg hover:bg-green-700 hover:text-white transition" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                to="/login"
+                className="px-4 py-2 bg-white text-green-600 rounded-lg hover:bg-green-700 hover:text-white transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Log In
               </Link>
-              <Link to="/signup" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                to="/signup"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Sign Up
               </Link>
             </>

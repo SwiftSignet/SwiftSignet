@@ -1,4 +1,9 @@
-/* 🌈 Background Gradient */
+/* ✅ Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ Global Body Styles */
 body {
   background: linear-gradient(to bottom, #3b82f6, #d946ef);
   font-family: Arial, sans-serif;
@@ -13,14 +18,14 @@ body {
 /* 📌 Navbar - Sticks to the Top */
 .navbar {
   display: flex;
-  justify-content: space-between; /* Space between logo & buttons */
+  justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(59, 130, 246, 0.9); /* Semi-transparent background */
+  background: rgba(59, 130, 246, 0.9);
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -64,7 +69,7 @@ body {
 /* 📢 Hero Section */
 .hero {
   max-width: 700px;
-  margin: 120px auto 50px; /* Adjusted for sticky navbar */
+  margin: 120px auto 50px;
   color: white;
   text-align: center;
   padding: 20px;
@@ -72,7 +77,7 @@ body {
 
 .cta-buttons {
   display: flex;
-  flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+  flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
   margin-top: 20px;
@@ -89,7 +94,7 @@ body {
   color: #3b82f6;
 }
 
-/* 🤖 Chatbot - Collapsible Feature */
+/* 🤖 Chatbot */
 .chatbot {
   position: fixed;
   bottom: 20px;
@@ -121,7 +126,6 @@ body {
   cursor: pointer;
 }
 
-/* 📩 Chat Window */
 .chat-window {
   height: 250px;
   overflow-y: auto;
@@ -146,7 +150,6 @@ body {
   background: #e2e2e2;
 }
 
-/* 📝 Chat Input */
 .chat-input {
   display: flex;
   gap: 8px;

@@ -1,21 +1,18 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Chatbot from "../components/Chatbot"; // Import chatbot component
+import Chatbot from "../components/Chatbot";
 
 const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirect logged-in users to the dashboard
     const token = localStorage.getItem("token");
-    if (token) {
-      navigate("/dashboard");
-    }
+    if (token) navigate("/dashboard");
   }, [navigate]);
 
   return (
     <div className="container min-h-screen flex flex-col items-center justify-center text-center">
-      {/* Navigation Bar */}
+      {/* Navbar */}
       <nav className="navbar flex justify-between w-full p-4 bg-white shadow-md">
         <h1 className="text-2xl font-bold text-green-600">SwiftSignet</h1>
         <div className="space-x-4">
@@ -36,7 +33,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* AI Chatbot Section */}
+      {/* Chatbot */}
       <div className="mt-12 w-full flex justify-center">
         <Chatbot />
       </div>
@@ -45,4 +42,3 @@ const Home = () => {
 };
 
 export default Home;
-
